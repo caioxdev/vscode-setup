@@ -1,0 +1,33 @@
+{
+  "Estrutura básica": {
+    "prefix": [
+      "!",
+      "mainc"
+    ],
+    "body": [
+      "#include <stdio.h>",
+      "#include <stdlib.h>",
+      "",
+      "int main() {",
+      "  $0",
+      "",
+      "  return 0;",
+      "}"
+    ],
+    "description": "Estrutura básica de um código em C"
+  },
+  "Printf": {
+    "prefix": "pt",
+    "body": [
+      "printf(\"$1\");"
+    ],
+    "description": "Estrutura do printf"
+  },
+  "Scanf": {
+    "prefix": "sf",
+    "body": [
+      "scanf(\"$1\", &$2);"
+    ],
+    "description": "Estrutura do scanf"
+  }
+}
