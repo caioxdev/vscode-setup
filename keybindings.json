@@ -1,26 +1,78 @@
 // Coloque as suas associações de teclas neste arquivo para substituir os padrões
 [
-  {
-    "key": "ctrl+abnt_c1",
-    "command": "editor.action.addCommentLine",
-    "when": "editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "ctrl+k ctrl+c",
-    "command": "-editor.action.addCommentLine",
-    "when": "editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "ctrl+q",
-    "command": "-workbench.action.quickOpenNavigateNextInViewPicker",
-    "when": "inQuickOpen && inViewsPicker"
-  },
-  {
-    "key": "ctrl+q",
-    "command": "-workbench.action.quickOpenView"
-  },
-  {
-    "key": "ctrl+q",
-    "command": "workbench.action.toggleActivityBarVisibility"
-  }
+    // ==========================================
+    // 🔥 COMENTÁRIO DE LINHA (Ctrl + ;)
+    // ==========================================
+    // Atalho para adicionar comentário de linha usando Ctrl + ;
+    // Substitui o padrão Ctrl+K Ctrl+C por um atalho mais intuitivo
+    {
+        "key": "ctrl+abnt_c1",
+        "command": "editor.action.addCommentLine",
+        "when": "editorTextFocus && !editorReadonly",
+    },
+    // Desativa o atalho antigo de comentário (Ctrl+K Ctrl+C)
+    {
+        "key": "ctrl+k ctrl+c",
+        "command": "-editor.action.addCommentLine",
+        "when": "editorTextFocus && !editorReadonly",
+    },
+    // ==========================================
+    // 🎨 TOGGLE ACTIVITY BAR (Ctrl + Q)
+    // ==========================================
+    // Atalho para mostrar/esconder a barra de atividades (sidebar esquerda)
+    // Substitui os atalhos padrão do Ctrl+Q
+    {
+        "key": "ctrl+q",
+        "command": "-workbench.action.quickOpenNavigateNextInViewPicker",
+        "when": "inQuickOpen && inViewsPicker",
+    },
+    {
+        "key": "ctrl+q",
+        "command": "-workbench.action.quickOpenView",
+    },
+    {
+        "key": "ctrl+q",
+        "command": "workbench.action.toggleActivityBarVisibility",
+    },
+    // ==========================================
+    // 💾 SALVAR + FORMATAR (Ctrl + S)
+    // ==========================================
+    // 🔥 CRUCIAL: Salva o arquivo E formata com Prettier ao mesmo tempo
+    // Funciona mesmo com autoSave ativado, garantindo que o Ctrl+S sempre formate
+    //
+    // COMO FUNCIONA:
+    // 1. Primeiro salva o arquivo (workbench.action.files.save)
+    // 2. Depois formata o documento (editor.action.formatDocument)
+    // 3. Só executa se tiver um formatador disponível e o editor estiver em foco
+    {
+        "key": "ctrl+s",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "workbench.action.files.save",
+                "editor.action.formatDocument"
+            ],
+        },
+        "when": "editorTextFocus && editorHasDocumentFormattingProvider && !editorReadonly",
+    },
+    // ==========================================
+    // 🚀 ALTERNATIVA: Salvar sem formatar (Ctrl + Shift + S)
+    // ==========================================
+    // Caso precise salvar sem formatar, use Ctrl+Shift+S
+    // Mantém o comportamento padrão de "Salvar Como"
+    {
+        "key": "ctrl+shift+s",
+        "command": "workbench.action.files.saveAs",
+        "when": "editorTextFocus",
+    },
+    // ==========================================
+    // ⚡ FORMATAR DOCUMENTO (Ctrl + Shift + F)
+    // ==========================================
+    // Atalho dedicado para formatar manualmente sem salvar
+    // Útil quando você quer apenas formatar sem salvar o arquivo
+    {
+        "key": "ctrl+shift+f",
+        "command": "editor.action.formatDocument",
+        "when": "editorTextFocus && editorHasDocumentFormattingProvider && !editorReadonly",
+    },
 ]
